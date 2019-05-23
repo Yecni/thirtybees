@@ -898,6 +898,22 @@ class InstallModelInstall extends InstallAbstractModel
      */
     public function installTheme()
     {
+//        $theme = new Theme();
+file_put_contents('/var/www/html/thirtybees/config/debug', __METHOD__.' '.__LINE__.' _PS_ALL_THEMES_DIR_ '.var_export(_PS_ALL_THEMES_DIR_, true)."\n", FILE_APPEND);
+//file_put_contents('/var/www/html/thirtybees/config/debug', __METHOD__.' '.__LINE__.' $this '.var_export($this, true)."\n", FILE_APPEND);
+$context = Context::getContext();
+file_put_contents('/var/www/html/thirtybees/config/debug', __METHOD__.' '.__LINE__.' $context->shop '.var_export($context->shop, true)."\n", FILE_APPEND);
+$themes = Theme::getInstalledThemeDirectories();
+file_put_contents('/var/www/html/thirtybees/config/debug', __METHOD__.' '.__LINE__.' $getInstalledThemeDirectories '.var_export($themes, true)."\n", FILE_APPEND);
+$themes = Theme::getNonInstalledTheme();
+file_put_contents('/var/www/html/thirtybees/config/debug', __METHOD__.' '.__LINE__.' $getNonInstalledTheme '.var_export($themes, true)."\n", FILE_APPEND);
+$theme = (int) Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue(
+    (new DbQuery())
+        ->select('*')
+        ->from('theme')
+);
+file_put_contents('/var/www/html/thirtybees/config/debug', __METHOD__.' '.__LINE__.' $theme '.var_export($theme, true)."\n", FILE_APPEND);
+
         // @todo do a real install of the theme
         $sqlLoader = new InstallSqlLoader();
         $sqlLoader->setMetaData(

@@ -46,8 +46,6 @@ $_TB_DEFAULT_MODULES_ = [
     'blockpaymentlogo',
     'blocksearch',
     'blockspecials',
-    'blockstore',
-    'blocksupplier',
     'blocktags',
     'blocktopmenu',
     'blockuserinfo',
